@@ -8,9 +8,10 @@ class Task extends Component {
 
   render() {
     return(
-      <div className="tile">
+      <div className="task">
         <span className="deleteButton" onClick={this.handleDelete}>&#10539;</span>
-        <h4 onClick={this.handleClick}>{this.props.task.title}</h4>
+        <h4 onClick={this.handleClick}>{this.props.task.name}</h4>
+        {/*<input type="checkbox">{this.props.task.done}</input>*/}
       </div>
     )
   }

@@ -1,5 +1,15 @@
 import React, { Component } from 'react';
 
+import {
+  Accordion,
+  AccordionItem,
+  AccordionItemTitle,
+  AccordionItemBody,
+} from 'react-accessible-accordion';
+
+import 'react-accessible-accordion/dist/fancy-example.css';
+import TasksContainer from "./tasksContainer";
+
 class Project extends Component {
 
   handleClick = () => { this.props.onClick(this.props.project.id) };
@@ -9,9 +19,17 @@ class Project extends Component {
   render() {
     return(
       <div className="tile">
-        <button>+</button>
-        <span className="deleteButton" onClick={this.handleDelete}>&#10539;</span>
-        <h4 onClick={this.handleClick}>{this.props.project.title}</h4>
+        <Accordion>
+          <AccordionItem>
+            <AccordionItemTitle>
+              <span className="deleteButton" onClick={this.handleDelete}>&#10539;</span>
+              <h4 className="tile" onClick={this.handleClick}>{this.props.project.title}</h4>
+            </AccordionItemTitle>
+            <AccordionItemBody >
+              <TasksContainer project={this.props.project}/>
+            </AccordionItemBody>
+          </AccordionItem>
+        </Accordion>
       </div>
     )
   }

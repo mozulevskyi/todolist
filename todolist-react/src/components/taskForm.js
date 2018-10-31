@@ -11,12 +11,12 @@ class TaskForm extends Component {
   }
 
   handleInput = (e) => {
-    this.setState({[e.target.name]: e.target.value})
+    this.setState({name: e.target.value})
   };
 
   handleBlur = () => {
-    const task = {title: this.state.title, done: this.state.done}
-    axios.put(`http://localhost:3001/projects/${this.props.project.id}`, {task: task})
+    const task = {name: this.state.name, done: this.state.done}
+    axios.put(`http://localhost:3001/projects/${this.props.project.id}/tasks/${this.props.task.id}`, {task: task})
       .then(response => {
         console.log(response)
         this.props.updateTask(response.data)

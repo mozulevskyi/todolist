@@ -56,11 +56,6 @@ class ProjectsContainer extends Component {
   render() {
     return(
       <div>
-        <div>
-          <button className="newProjButton" onClick={this.addNewProject}>
-            New Project
-          </button>
-        </div>
         {this.state.projects.map((project) => {
           if(this.state.editingProjectId === project.id) {
             return(<ProjectForm project={project} key={project.id} updateProject={this.updateProject}
@@ -70,6 +65,11 @@ class ProjectsContainer extends Component {
                           onDelete={this.deleteProject} />)
           }
         })}
+        <div>
+          <button className="newProjButton" onClick={this.addNewProject}>
+            New Project
+          </button>
+        </div>
       </div>
     )
   }

@@ -1,12 +1,14 @@
 class TasksController < ApplicationController
 
+  before_action :current_project
+
   def index
-    @tasks = current_project.tasks.order('created_at DESC')
+    @tasks = current_project.tasks.order('created_at ASC')
     render json: @tasks
   end
 
   def create
-    @task = Task.create(task_params.merge(project_id: current_project.id))
+    @task = @project.tasks.create!(task_params)
     render json: @task
   end
 
