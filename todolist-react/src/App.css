@@ -1,0 +1,66 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #a4f4c9;
+  min-height: 20vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(25px);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.newProjButton {
+  border: 1px solid transparent;
+  line-height: 18px;
+  padding: 10px 8px;
+  cursor: pointer;
+}
+
+.newProjButton:hover {
+  background: lightgrey;
+}
+
+.tile {
+  height: 60px;
+  width: 700px;
+  margin: 5px;
+  background: #E3E3E3;
+  font-size: 16px;
+  /*text-align: initial;*/
+}
+
+.input {
+  border: 0;
+  outline: none;
+  margin-top:10px;
+  font-size: 14px;
+  width: 280px;
+  background: none;
+}
+
+.input:focus {
+  border: solid 1px lightgrey;
+}
+
+.deleteButton {
+  visibility: hidden;
+  float: right;
+  margin-right: 7px;
+  font-size: 30px;
+  cursor: pointer;
+  border: 2px solid;
+  border-radius: 6px;
+  color: #7B7A7A;
+}
+
+.tile:hover .deleteButton {
+  visibility: visible;
+}
