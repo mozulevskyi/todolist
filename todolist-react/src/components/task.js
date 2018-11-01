@@ -29,9 +29,9 @@ class Task extends Component {
   render() {
     return(
       <div className="task">
-        <span className="deleteButton" onClick={this.handleDelete}>&#10539;</span>
-        <h4 onClick={this.handleClick}>{this.props.task.name}</h4>
-        <input onChange={this.tuggleChecked.bind(this)} type={'checkbox'} checked={this.state.done} />
+        <span className="taskDeleteButton" onClick={this.handleDelete}>&#10539;</span>
+        <h4 className="taskTile" onClick={this.handleClick}>{this.props.task.name}</h4>
+        <input className="checkboxInput" onChange={this.tuggleChecked.bind(this)} type={'checkbox'} checked={this.state.done} />
       </div>
     )
   }

@@ -29,7 +29,7 @@ class TaskForm extends Component {
     return(
       <div className="tile">
         <form onBlur={this.handleBlur} >
-          <input className="input" type="text" name="name" placeholder="Enter name of the post"
+          <input className="taskInput" type="text" name="name" placeholder="Enter name of the post"
                  value={this.state.name} onChange={this.handleInput}
                  ref={this.props.nameRef} />
         </form>

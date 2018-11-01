@@ -28,44 +28,110 @@
   background: lightgrey;
 }
 
-.tile {
+.taskTile {
+  margin-top: 14px;
+  font-size: 15px;
+  font-weight: 400;
+  width: 90%;
+  margin-left: 40px;
+  text-align: left
+}
 
+.tile {
+  margin-top: auto;
+  width: 85%;
+  margin-left: 50px;
 }
 
 .task {
-  height: 60px;
-  width: 700px;
-  margin: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  margin-top: -10px;
+  margin-bottom: 16px;
+  margin-left: 10px;
+  width: 839px;
+  background: none;
+  height: 44px;
+  font-size: 17px;
   background: #E3E3E3;
-  font-size: 16px;
-  /*text-align: initial;*/
 }
 
-.input {
-  border: none;
+.projectInput {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
   outline: none;
-  margin: 12px;
-  font-size: 20px;
-  width: 50%;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  margin-left: 171px;
+  width: 902px;
   background: none;
   height: 50px;
+  font-size: 19px;
+}
+
+.checkboxInput {
+  float: left;
+  margin-top: -36px;
+  margin-left: 15px;
+}
+
+.taskInput {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  outline: none;
+  margin-top: -10px;
+  margin-bottom: 17px;
+  margin-left: -40px;
+  width: 839px;
+  background: none;
+  height: 44px;
+  font-size: 17px;
+  text-align: center;
+  cursor: initial;
 }
 
 .input:focus {
   border: solid 1px lightgrey;
 }
 
-.deleteButton {
+.taskDeleteButton {
   visibility: hidden;
   float: right;
   margin-right: 7px;
-  font-size: 30px;
+  margin-top: 8px;
+  font-size: 24px;
   cursor: pointer;
-  border: 2px solid;
-  border-radius: 6px;
   color: #7B7A7A;
 }
 
-.task:hover .deleteButton {
+.projectDeleteButton {
+  visibility: hidden;
+  float: right;
+  margin-right: -5px;
+  font-size: 25px;
+  cursor: pointer;
+  margin-top: -5px;
+  color: #7B7A7A;
+}
+
+.accordion:hover .projectDeleteButton {
   visibility: visible;
+}
+.task:hover .taskDeleteButton {
+  visibility: visible;
+}
+
+.accordion__title {
+  height: 15px;
+}
+
+.accordion__item {
+  width: 96%;
+}
+
+.accordion {
+  width: 47%;
+  margin-left: 500px;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }

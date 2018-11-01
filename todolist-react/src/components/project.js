@@ -18,11 +18,11 @@ class Project extends Component {
 
   render() {
     return(
-      <div className="tile">
+      <div>
         <Accordion>
           <AccordionItem>
             <AccordionItemTitle>
-              <span className="deleteButton" onClick={this.handleDelete}>&#10539;</span>
+              <span className="projectDeleteButton" onClick={this.handleDelete}>&#10539;</span>
               <h4 className="tile" onClick={this.handleClick}>{this.props.project.title}</h4>
             </AccordionItemTitle>
             <AccordionItemBody >

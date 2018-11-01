@@ -9,7 +9,6 @@ class TasksContainer extends Component {
     super(props)
     this.state = {
       tasks: [],
-      done: false,
       editingTaskId: false,
     }
   }
