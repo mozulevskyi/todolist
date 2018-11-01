@@ -10,7 +10,7 @@ class TasksContainer extends Component {
     this.state = {
       tasks: [],
       done: false,
-      editingTaskId: null,
+      editingTaskId: false,
     }
   }
 
@@ -36,7 +36,8 @@ class TasksContainer extends Component {
   updateTask = (task) => {
     const taskIndex = this.state.tasks.findIndex(x => x.id === task.id)
     const tasks = update(this.state.tasks, {[taskIndex]: {$set: task }})
-    this.setState({tasks: tasks})
+    this.setState({tasks: tasks, editingTaskId: false});
+
   };
 
   enableEditing = (id) => {

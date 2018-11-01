@@ -9,7 +9,7 @@ class ProjectsContainer extends Component {
     super(props)
     this.state = {
       projects: [],
-      editingProjectId: null,
+      editingProjectId: false,
     }
   }
 
@@ -36,7 +36,7 @@ class ProjectsContainer extends Component {
   updateProject = (project) => {
     const projectIndex = this.state.projects.findIndex(x => x.id === project.id)
     const projects = update(this.state.projects, {[projectIndex]: {$set: project }})
-    this.setState({projects: projects})
+    this.setState({projects: projects, editingProjectId: false})
   };
 
   enableEditing = (id) => {

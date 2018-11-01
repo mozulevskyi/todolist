@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "immutability-helper": "^2.8.1",
+    "rc-checkbox": "^2.1.5",
     "react": "^16.6.0",
     "react-accessible-accordion": "^2.4.5",
     "react-dom": "^16.6.0",

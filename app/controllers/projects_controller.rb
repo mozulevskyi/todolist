@@ -20,7 +20,7 @@ class ProjectsController < ApplicationController
 
   def update
     current_project.update(project_params)
-    head :no_content
+    render json: current_project
   end
 
   def destroy

@@ -15,7 +15,7 @@ class TasksController < ApplicationController
   def update
     @project = current_project
     current_task.update_attributes(task_params)
-    head :no_content
+    render json: current_task
   end
 
   def destroy

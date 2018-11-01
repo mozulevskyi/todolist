@@ -19,6 +19,7 @@ class ProjectForm extends Component {
       .then(response => {
         console.log(response)
         this.props.updateProject(response.data)
+        this.setState(response.data)
       })
       .catch(error => console.log(error))
   };
