@@ -1,22 +1,20 @@
 class CommentsController < ApplicationController
 
-  before_action :current_project
-
-  before_action :current_task
-
   def index
-    @comments = current_task.comments.order('created_at DESC')
+    @comments = current_task.comments.order('created_at ASC')
     render json: @comments
   end
 
   def create
-    @comment = Comment.create(comments_params.merge(task_id: current_task.id))
+    @task = current_task
+    @comment = @task.comments.create!(comments_params)
     render json: @comment
   end
 
   def update
+    @task = current_task
     current_comment.update_attributes(comments_params)
-    head :no_content
+    render json: current_comment
   end
 
   def destroy
@@ -25,10 +23,6 @@ class CommentsController < ApplicationController
   end
 
   private
-
-  def current_project
-    @project = Project.find(params[:project_id])
-  end
 
   def current_task
     @task = Task.find(params[:task_id])

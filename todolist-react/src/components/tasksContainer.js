@@ -36,7 +36,6 @@ class TasksContainer extends Component {
     const taskIndex = this.state.tasks.findIndex(x => x.id === task.id)
     const tasks = update(this.state.tasks, {[taskIndex]: {$set: task }})
     this.setState({tasks: tasks, editingTaskId: false});
-
   };
 
   enableEditing = (id) => {
@@ -57,6 +56,7 @@ class TasksContainer extends Component {
     let self = this;
     return(
       <div>
+        Tasks
         {this.state.tasks.map((task) => {
           if(self.state.editingTaskId === task.id && task.id) {
             return(<TaskForm project={self.props.project} task={task} key={task.id} updateTask={this.updateTask}
@@ -67,7 +67,7 @@ class TasksContainer extends Component {
           }
         })}
         <div>
-          <button className="newProjButton" onClick={this.addNewTask}>
+          <button className="newTaskButton" onClick={this.addNewTask}>
             New Task
           </button>
         </div>

@@ -3,7 +3,7 @@ class TasksController < ApplicationController
   before_action :current_project
 
   def index
-    @tasks = current_project.tasks.order('created_at ASC')
+    @tasks = current_project.tasks.order('created_at DESC')
     render json: @tasks
   end
 

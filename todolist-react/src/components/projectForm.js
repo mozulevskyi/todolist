@@ -10,7 +10,7 @@ class ProjectForm extends Component {
   }
 
   handleInput = (e) => {
-    this.setState({[e.target.name]: e.target.value})
+    this.setState({title: e.target.value})
   };
 
   handleBlur = () => {
@@ -28,7 +28,7 @@ class ProjectForm extends Component {
     return(
       <div className="tile">
         <form onBlur={this.handleBlur} >
-          <input className="projectInput" type="text" name="title" placeholder="Enter name of the post"
+          <input className="projectInput" type="text" name="title" placeholder="Enter title of the project"
                  value={this.state.title} onChange={this.handleInput}
                  ref={this.props.titleRef} />
         </form>
