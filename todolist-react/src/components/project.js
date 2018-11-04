@@ -10,6 +10,8 @@ import {
 import 'react-accessible-accordion/dist/fancy-example.css';
 import TasksContainer from "./tasksContainer";
 
+import "react-datepicker/dist/react-datepicker.css";
+
 class Project extends Component {
 
   handleClick = () => { this.props.onClick(this.props.project.id) };
