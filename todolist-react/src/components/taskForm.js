@@ -20,7 +20,7 @@ class TaskForm extends Component {
     this.setState({name: e.target.value})
   };
 
-  handleBlur = (e) => {
+  handleSubmit = (e) => {
     e.preventDefault();
     const task = {name: this.state.name, done: this.state.done}
     axios.put(`http://localhost:3001/projects/${this.props.project.id}/tasks/${this.props.task.id}`, {task: task})
@@ -49,7 +49,7 @@ class TaskForm extends Component {
           <input className="taskInput" type="text" name="name" placeholder="Enter name of the task"
                  value={this.state.name} onChange={this.handleInput}
                  ref={this.props.nameRef} />
-          <button type="submit" onClick={this.handleBlur}>add</button>
+          <button type="submit" onClick={this.handleSubmit}>Add</button>
         </form>
         <p>Set the deadline: </p>
         <DatePicker
