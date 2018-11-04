@@ -10,14 +10,6 @@ class ProjectsController < ApplicationController
     render json: @project
   end
 
-  def show
-    @project = current_project
-    render json: {
-        project: @project,
-        tasks: @project.tasks || []
-    }.to_json
-  end
-
   def update
     current_project.update(project_params)
     render json: current_project

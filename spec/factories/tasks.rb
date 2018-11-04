@@ -3,5 +3,6 @@ FactoryBot.define do
     name "MyString"
     done false
     project nil
+    deadline nil
   end
 end
