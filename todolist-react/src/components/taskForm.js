@@ -14,7 +14,8 @@ class TaskForm extends Component {
     this.setState({name: e.target.value})
   };
 
-  handleBlur = () => {
+  handleSubmit = (e) => {
+    e.preventDefault();
     const task = {name: this.state.name, done: this.state.done}
     axios.put(`http://localhost:3001/projects/${this.props.project.id}/tasks/${this.props.task.id}`, {task: task})
       .then(response => {
@@ -28,10 +29,11 @@ class TaskForm extends Component {
   render() {
     return(
       <div className="tile">
-        <form onBlur={this.handleBlur} >
+        <form>
           <input className="taskInput" type="text" name="name" placeholder="Enter name of the task"
                  value={this.state.name} onChange={this.handleInput}
                  ref={this.props.nameRef} />
+          <button onClick={this.handleSubmit}>Add</button>
         </form>
       </div>
     );

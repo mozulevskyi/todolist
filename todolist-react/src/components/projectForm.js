@@ -13,7 +13,8 @@ class ProjectForm extends Component {
     this.setState({title: e.target.value})
   };
 
-  handleBlur = () => {
+  handleSubmit = (e) => {
+    e.preventDefault();
     const project = {title: this.state.title}
     axios.put(`http://localhost:3001/projects/${this.props.project.id}`, {project: project})
       .then(response => {
@@ -27,10 +28,11 @@ class ProjectForm extends Component {
   render() {
     return(
       <div className="tile">
-        <form onBlur={this.handleBlur} >
+        <form>
           <input className="projectInput" type="text" name="title" placeholder="Enter title of the project"
                  value={this.state.title} onChange={this.handleInput}
                  ref={this.props.titleRef} />
+          <button type="submit" onClick={this.handleSubmit}>Add</button>
         </form>
       </div>
     );

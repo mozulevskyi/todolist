@@ -13,7 +13,8 @@ class CommentForm extends Component {
     this.setState({body: e.target.value})
   };
 
-  handleBlur = () => {
+  handleSubmit = (e) => {
+    e.preventDefault();
     const comment = {body: this.state.body}
     axios.put(`http://localhost:3001/projects/${this.props.project.id}/tasks/${this.props.task.id}/comments/${this.props.comment.id}`, {comment: comment})
       .then(response => {
@@ -27,10 +28,11 @@ class CommentForm extends Component {
   render() {
     return(
       <div className="tile">
-        <form onBlur={this.handleBlur} >
+        <form>
           <input className="commentInput" type="text" name="body" placeholder="Type your comment"
                  value={this.state.body} onChange={this.handleInput}
                  ref={this.props.bodyRef} />
+          <button onClick={this.handleSubmit}>Add</button>
         </form>
       </div>
     );
