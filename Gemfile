@@ -11,7 +11,8 @@ gem 'uglifier', '>= 1.3.0'                              # Use Uglifier as compre
 gem 'coffee-rails', '~> 4.2'                            # Use CoffeeScript for .coffee assets and views
 gem 'turbolinks', '~> 5'                                # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'jbuilder', '~> 2.5'                                # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'rack-cors', require: 'rack/cors'
+gem 'rack-cors', require: 'rack/cors'                   # Middleware that will make Rack-based apps CORS compatible
+gem 'apipie-rails', '~> 0.5.0'                          # Rails REST API documentation tool
 # gem 'redis', '~> 4.0'                                 # Use Redis adapter to run Action Cable in production
 # gem 'bcrypt', '~> 3.1.7'                              # Use ActiveModel has_secure_password
 # gem 'capistrano-rails', group: :development           # Use Capistrano for deployment

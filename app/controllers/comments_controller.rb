@@ -1,22 +1,26 @@
 class CommentsController < ApplicationController
 
+  api :GET, '/projects/:id/tasks/:id/comments', 'List of all task`s comments in json format'
   def index
     @comments = current_task.comments.order('created_at ASC')
     render json: @comments
   end
 
+  api :POST, '/projects/:id/tasks/:id/comments', 'Create comment for specific project'
   def create
     @task = current_task
     @comment = @task.comments.create!(comments_params)
     render json: @comment
   end
 
+  api :PUT, '/projects/:id/tasks/:id/comments/:id', 'Update current comment for specific task'
   def update
     @task = current_task
     current_comment.update_attributes(comments_params)
     render json: current_comment
   end
 
+  api :DELETE, '/projects/:id/tasks/:id/comments/:id', 'Delete current existing comment'
   def destroy
     current_comment.destroy
     head :no_content
