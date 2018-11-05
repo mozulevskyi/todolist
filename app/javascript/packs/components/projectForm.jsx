@@ -7,6 +7,7 @@ class ProjectForm extends Component {
     this.state = {
       title: this.props.project.title,
     }
+    axios.defaults.withCredentials = true;
   }
 
   handleInput = (e) => {

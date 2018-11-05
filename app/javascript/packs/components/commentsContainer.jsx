@@ -11,6 +11,7 @@ class CommentsContainer extends Component {
       comments: [],
       editingCommentId: false
     }
+    axios.defaults.withCredentials = true;
   }
 
   componentDidMount() {

@@ -1,9 +1,15 @@
 require 'spec_helper'
 
 RSpec.describe CommentsController, type: :controller do
-  let!(:project) { FactoryBot.create(:project) }
+
+  let!(:user) { FactoryBot.create(:user) }
+  let!(:project) { FactoryBot.create(:project, user_id: user.id) }
   let!(:task) { FactoryBot.create(:task, project_id: project.id) }
   let!(:comment) { FactoryBot.create(:comment, task_id: task.id, body: 'First comment') }
+
+  before :each do
+    sign_in(user)
+  end
 
   describe 'GET list of all comments' do
     it 'returns status code 200' do

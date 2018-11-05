@@ -1,7 +1,12 @@
 require 'spec_helper'
 
 RSpec.describe ProjectsController, type: :controller do
-  let!(:project) { FactoryBot.create(:project, title: 'Hello') }
+  let!(:user) { FactoryBot.create(:user) }
+  let!(:project) { FactoryBot.create(:project, title: 'Hello', user_id: user.id) }
+
+  before :each do
+    sign_in(user)
+  end
 
   describe 'GET list of all projects' do
     it 'returns status code 200' do

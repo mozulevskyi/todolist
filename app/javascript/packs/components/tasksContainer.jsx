@@ -11,6 +11,8 @@ class TasksContainer extends Component {
       tasks: [],
       editingTaskId: false,
     }
+
+    axios.defaults.withCredentials = true;
   }
 
   componentDidMount() {

@@ -20,6 +20,7 @@ class Task extends Component {
   constructor(props) {
     super(props)
     this.state = props.task
+    axios.defaults.withCredentials = true;
   }
 
   // handleChange = (date) => {

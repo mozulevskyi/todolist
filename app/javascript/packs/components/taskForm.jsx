@@ -14,6 +14,8 @@ class TaskForm extends Component {
       done: this.props.task.done,
       startDate: moment()
     }
+
+    axios.defaults.withCredentials = true;
   }
 
   handleInput = (e) => {

@@ -11,6 +11,7 @@ class ProjectsContainer extends Component {
       projects: [],
       editingProjectId: false,
     }
+    axios.defaults.withCredentials = true;
   }
 
   componentDidMount() {

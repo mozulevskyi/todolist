@@ -90,4 +90,7 @@ RSpec.configure do |config|
   # Use the specified formatter
   config.formatter = :documentation # :progress, :html,
   # :json, CustomFormatterClass
+
+  # Adding helpful rspec stuff for devise functionality testing
+  config.include Devise::Test::ControllerHelpers, type: :controller
 end

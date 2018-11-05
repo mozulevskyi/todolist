@@ -7,6 +7,7 @@ class CommentForm extends Component {
     this.state = {
       body: this.props.comment.body,
     }
+    axios.defaults.withCredentials = true;
   }
 
   handleInput = (e) => {

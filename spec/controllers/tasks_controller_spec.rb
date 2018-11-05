@@ -1,8 +1,13 @@
 require 'spec_helper'
 
 RSpec.describe TasksController, type: :controller do
-  let!(:project) { FactoryBot.create(:project) }
+  let!(:user) { FactoryBot.create(:user) }
+  let!(:project) { FactoryBot.create(:project, user_id: user.id) }
   let!(:task) { FactoryBot.create(:task, project_id: project.id, name: 'Task one') }
+
+  before :each do
+    sign_in(user)
+  end
 
   describe 'GET list of all tasks' do
     it 'returns status code 200' do
