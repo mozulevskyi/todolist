@@ -1,21 +1,33 @@
 require 'rubygems'
-require 'simplecov'
-SimpleCov.start 'rails'
-SimpleCov.start do
-  add_filter 'app/admin/'
-  add_filter 'app/controllers/users/'
-end
 require 'factory_bot_rails'
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'capybara/rspec'
+require 'capybara/rails'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
+# Capybara Settings
+Capybara.configure do |config|
+  config.javascript_driver = :selenium
+  config.run_server = true
+  config.default_selector = :css
+  config.default_max_wait_time = 10
+
+  #capybara 2.1 config options
+  config.match = :prefer_exact
+  config.ignore_hidden_elements = false
+end
+
+Capybara.register_driver :selenium do |app|
+  Capybara::Selenium::Driver.new(app, :browser => :chrome)
+end
+
+# Rspec Settings
 RSpec.configure do |config|
   # ## Mock Framework
   #

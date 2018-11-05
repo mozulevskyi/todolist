@@ -33,9 +33,10 @@ group :test do
   gem 'database_cleaner', '~> 1.6.2'
   gem 'rspec-expectations', '~> 3.7.0'
   gem 'rails-controller-testing', '~> 1.0.2'
-  gem 'selenium-webdriver', '~> 3.6.0'
   gem 'simplecov', '~> 0.16.1', require: false
   gem 'shoulda-matchers', '~> 3.1.2'
+
+  gem 'selenium-webdriver', '~> 3.9'                    # for browser tests
 end
 
 group :production do
