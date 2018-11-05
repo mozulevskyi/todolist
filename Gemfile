@@ -1,21 +1,20 @@
 source 'https://rubygems.org'
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.4.2'
 
-gem 'rails', '5.1.6'                                    # for ruby on rails (vs ruby on sinatra)
-gem 'puma', '~> 3.10'                                   # Use Puma as the app server
-
-gem 'pg', '~> 0.21.0'                                   # Postgres gem
-gem 'sass-rails', '~> 5.0'                              # Use SCSS for stylesheets
-gem 'uglifier', '>= 1.3.0'                              # Use Uglifier as compressor for JavaScript assets
-gem 'coffee-rails', '~> 4.2'                            # Use CoffeeScript for .coffee assets and views
-gem 'turbolinks', '~> 5'                                # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'jbuilder', '~> 2.5'                                # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'rack-cors', require: 'rack/cors'                   # Middleware that will make Rack-based apps CORS compatible
-gem 'apipie-rails', '~> 0.5.0'                          # Rails REST API documentation tool
-# gem 'redis', '~> 4.0'                                 # Use Redis adapter to run Action Cable in production
-# gem 'bcrypt', '~> 3.1.7'                              # Use ActiveModel has_secure_password
-# gem 'capistrano-rails', group: :development           # Use Capistrano for deployment
+# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'rails', '~> 5.2.1'
+gem 'pg', '~> 0.21.0'                 # Postgres gem
+gem 'puma', '~> 3.11'                 # Use Puma as the app server
+gem 'sass-rails', '~> 5.0'            # Use SCSS for stylesheets
+gem 'uglifier', '>= 1.3.0'            # Use Uglifier as compressor for JavaScript assets
+gem 'webpacker', '~> 3.5', '>= 3.5.5' # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
+gem 'apipie-rails', '~> 0.5.13'
+gem 'turbolinks', '~> 5'              # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
+gem 'jbuilder', '~> 2.5'              # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+# gem 'bootsnap', '>= 1.1.0', require: false  # Reduces boot times through caching; required in config/boot.rb
+gem 'coffee-rails', '~> 4.2', '>= 4.2.2'
 
 group :development, :test do
   gem 'byebug', '~> 10.0.2'
@@ -27,10 +26,7 @@ group :development, :test do
 end
 
 group :development do
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
 group :test do
