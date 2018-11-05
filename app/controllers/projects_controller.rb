@@ -8,20 +8,33 @@ class ProjectsController < ApplicationController
 
   api :POST, '/projects', 'Create a new project'
   def create
-    @project = current_user.projects.create(project_params)
-    render json: @project
+    if can?(:manage, Project)
+      @project = current_user.projects.create(project_params)
+      render json: @project
+    else
+      render json: {}, status: 401
+    end
   end
 
   api :PUT, '/projects/:id', 'Update existing project'
   def update
-    current_project.update(project_params)
-    render json: current_project
+    if can?(:manage, Project)
+      current_project.update(project_params)
+      render json: current_project
+    else
+      render json: {}, status: 401
+    end
   end
 
   api :DELETE, '/projects/:id', 'Delete existing project'
   def destroy
-    current_project.destroy
-    head :no_content
+    if can?(:manage, Project)
+      current_project.destroy
+      head :no_content
+    else
+      render json: {}, status: 401
+    end
+
   end
 
   private

@@ -1,7 +1,5 @@
 class TasksController < ApplicationController
 
-  before_action :current_project
-
   api :GET, '/projects/:id/tasks', 'List of all project`s tasks in json format'
   def index
     @tasks = current_project.tasks.order('created_at DESC')
@@ -10,21 +8,28 @@ class TasksController < ApplicationController
 
   api :POST, '/projects/:id/tasks', 'Create task for specific project'
   def create
-    @task = @project.tasks.create!(task_params)
+    @task = current_project.tasks.create(task_params)
     render json: @task
   end
 
   api :PUT, '/projects/:id/tasks/:id', 'Update current task for specific project'
   def update
-    @project = current_project
-    current_task.update_attributes(task_params)
-    render json: current_task
+    if can?(:manage, Task)
+      current_task.update_attributes(task_params)
+      render json: current_task
+    else
+      render json: {}, status: 401
+    end
   end
 
   api :DELETE, '/projects/:id/tasks/:id', 'Delete current existing task'
   def destroy
-    current_task.destroy
-    head :no_content
+    if can?(:manage, Task)
+      current_task.destroy
+      head :no_content
+    else
+      render json: {}, status: 401
+    end
   end
 
   private

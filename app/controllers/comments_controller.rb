@@ -8,14 +8,12 @@ class CommentsController < ApplicationController
 
   api :POST, '/projects/:id/tasks/:id/comments', 'Create comment for specific project'
   def create
-    @task = current_task
-    @comment = @task.comments.create!(comments_params)
+    @comment = current_task.comments.create!(comments_params)
     render json: @comment
   end
 
   api :PUT, '/projects/:id/tasks/:id/comments/:id', 'Update current comment for specific task'
   def update
-    @task = current_task
     current_comment.update_attributes(comments_params)
     render json: current_comment
   end
@@ -33,7 +31,7 @@ class CommentsController < ApplicationController
   end
 
   def current_comment
-    @comment = Comment.find(params[:id])
+    @comment = current_task.comments.find(params[:id])
   end
 
   def comments_params
