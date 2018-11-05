@@ -13,8 +13,8 @@ gem 'webpacker', '~> 3.5', '>= 3.5.5' # Transpile app-like JavaScript. Read more
 gem 'apipie-rails', '~> 0.5.13'
 gem 'turbolinks', '~> 5'              # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'jbuilder', '~> 2.5'              # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-# gem 'bootsnap', '>= 1.1.0', require: false  # Reduces boot times through caching; required in config/boot.rb
 gem 'coffee-rails', '~> 4.2', '>= 4.2.2'
+gem 'devise', '~> 4.5'
 
 group :development, :test do
   gem 'byebug', '~> 10.0.2'

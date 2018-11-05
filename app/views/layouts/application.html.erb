@@ -2,9 +2,15 @@
 <html>
   <head>
     <title>Todolist</title>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   </head>
 
   <body>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+
     <%= yield %>
   </body>
   <%= stylesheet_pack_tag 'index' %>
