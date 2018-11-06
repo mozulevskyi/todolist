@@ -1,0 +1,110 @@
+.sign_up {
+
+}
+
+html {
+  .login-wrap {
+    text-align: center;
+    margin-top: 7%;
+    margin-left: 40%;
+    background: #ecf0f1;
+    width: 20%;
+    border-radius: 8px;
+    box-shadow: 3px 3px 20px grey;
+    padding: 15px;
+
+    h2 {
+      text-align: center;
+      font-weight: 200;
+      font-size: 2em;
+      margin-top: 10px;
+      color: #34495e;
+    }
+
+    a {
+      text-align: center;
+      font-weight: 200;
+      font-size: 1em;
+      color: #34495e;
+      text-decoration: none;
+
+      &:hover {
+        color: black;
+      }
+    }
+
+    em {
+      font-weight: 200;
+      font-size: 1em;
+      color: #34495e;;
+    }
+
+    .checkbox {
+      margin-bottom: 2%;
+      margin-top: -3%;
+      margin-right: 51%;
+      font-weight: 200;
+      font-size: 1em;
+      color: #34495e;
+    }
+
+    .submit_btn {
+      input {
+        background: #e74c3c !important;
+        border: none !important;
+        color: white !important;
+        font-size: 18px !important;
+        font-weight: 200 !important;
+        cursor: pointer !important;
+        transition: box-shadow .4s ease;
+        margin: 2%;
+        width: 83%;
+        padding: 3%;
+
+        &:hover {
+          box-shadow: 1px 1px 5px #555;
+        }
+
+        &:active {
+          box-shadow: 1px 1px 7px #222;
+        }
+      }
+    }
+
+    .form {
+      input[type="email"],
+      input[type="password"],
+      button {
+        width: 80%;
+        margin-left: 10%;
+        margin-bottom: 25px;
+        height: 40px;
+        border-radius: 5px;
+        outline: 0;
+      }
+
+      input[type="email"],
+      input[type="password"] {
+        border: 1px solid #bbb;
+        padding: 0 0 0 10px;
+        font-size: 14px;
+        margin-left: 0;
+        margin-top: 2%;
+        &:focus {
+          border: 1px solid #3498db;
+        }
+      }
+
+      label {
+        text-align: center;
+        font-weight: 200;
+        font-size: 1em;
+        margin-top: 10px;
+        color: #34495e;
+      }
+    }
+  }
+}
+
+
+
