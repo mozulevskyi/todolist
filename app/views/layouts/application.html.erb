@@ -11,9 +11,9 @@
     <p class="alert"><%= alert %></p>
 
     <% if user_signed_in? %>
-      <li>
+      <div class="log_out">
         <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
-      </li>
+      </div>
     <% end %>
 
     <%= yield %>

@@ -51,9 +51,9 @@ class TaskForm extends Component {
           <input className="taskInput" type="text" name="name" placeholder="Enter name of the task"
                  value={this.state.name} onChange={this.handleInput}
                  ref={this.props.nameRef} />
-          <button type="submit" onClick={this.handleSubmit}>Add</button>
+          <button className="addTaskButton" type="submit" onClick={this.handleSubmit}>Add</button>
         </form>
-        <p>Set the deadline: </p>
+        Set the deadline:
         <DatePicker
           selected={this.state.startDate}
           onChange={this.handleChange}
@@ -62,6 +62,7 @@ class TaskForm extends Component {
           timeIntervals={15}
           dateFormat="LLL"
           timeCaption="time"
+          className="deadline"
         />
       </div>
     );

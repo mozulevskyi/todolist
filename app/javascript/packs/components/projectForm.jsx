@@ -33,7 +33,7 @@ class ProjectForm extends Component {
           <input className="projectInput" type="text" name="title" placeholder="Enter title of the project"
                  value={this.state.title} onChange={this.handleInput}
                  ref={this.props.titleRef} />
-          <button type="submit" onClick={this.handleSubmit}>Add</button>
+          <button className="addProjButton" type="submit" onClick={this.handleSubmit}>Add</button>
         </form>
       </div>
     );

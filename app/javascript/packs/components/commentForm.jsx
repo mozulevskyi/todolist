@@ -33,7 +33,7 @@ class CommentForm extends Component {
           <input className="commentInput" type="text" name="body" placeholder="Type your comment"
                  value={this.state.body} onChange={this.handleInput}
                  ref={this.props.bodyRef} />
-          <button onClick={this.handleSubmit}>Add</button>
+          <button className="addCommentButton" onClick={this.handleSubmit}>Add</button>
         </form>
       </div>
     );
