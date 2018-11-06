@@ -52,6 +52,7 @@ class Task extends Component {
         <Accordion>
           <AccordionItem>
             <AccordionItemTitle>
+              <i className="down_arrow"></i>
               <span className="taskDeleteButton" onClick={this.handleDelete}>&#10539;</span>
               <div className="task" onClick={this.handleClick}>{this.props.task.name}</div>
               <input className="checkboxInput" onChange={this.tuggleChecked.bind(this)} type={'checkbox'} checked={this.state.done} />
