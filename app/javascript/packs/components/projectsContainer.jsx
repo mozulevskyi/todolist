@@ -18,6 +18,7 @@ class ProjectsContainer extends Component {
     fetch('/projects.json', { credentials: 'include' })
       .then(response => response.json())
       .then(response => {
+        console.log(response)
         this.setState({ projects: response.data });
       })
       .catch(error => {
@@ -26,8 +27,17 @@ class ProjectsContainer extends Component {
   };
 
   addNewProject = () => {
-    axios.post('/projects', {project: {title: ''}})
+    fetch('/projects', {
+      credentials: 'include',
+      method: 'post',
+      headers: {
+        'Accept': 'application/vnd.api+json',
+        'Content-Type': 'application/vnd.api+json'
+      },
+      body: JSON.stringify({data : {type: 'projects',  attributes: {title: ''} } })
+    }).then(response => response.json())
       .then(response => {
+        console.log(' resp', response)
         const projects = update(this.state.projects, { $splice: [[0, 0, response.data]]})
         this.setState({projects: projects, editingProjectId: response.data.id})
       })
@@ -45,8 +55,14 @@ class ProjectsContainer extends Component {
   };
 
   deleteProject = (id) => {
-    axios.delete(`/projects/${id}`)
-      .then(response => {
+    fetch(`/projects/${id}`, {
+      credentials: 'include',
+      method: 'DELETE',
+      headers: {
+        'Accept': 'application/vnd.api+json',
+        'Content-Type': 'application/vnd.api+json'
+      }
+    }).then(response => {
         const projectIndex = this.state.projects.findIndex(x => x.id === id)
         const projects = update(this.state.projects, { $splice: [[projectIndex, 1]]})
         this.setState({projects: projects})

@@ -39,8 +39,8 @@ class Task extends Component {
   };
 
   deadlineStyle = () => {
-    if(!this.props.task.deadline) return 'deadline_time'
-    let date = new Date(this.props.task.deadline);
+    if(!this.props.task.attributes.deadline) return 'deadline_time'
+    let date = new Date(this.props.task.attributes.deadline);
     let currentDate = new Date();
     return (currentDate > date) ? 'deadline_red' : 'deadline_ok';
   };
@@ -54,12 +54,12 @@ class Task extends Component {
             <AccordionItemTitle>
               <i className="down_arrow"></i>
               <span className="taskDeleteButton" onClick={this.handleDelete}>&#10539;</span>
-              <div className="task" onClick={this.handleClick}>{this.props.task.name}</div>
+              <div className="task" onClick={this.handleClick}>{this.props.task.attributes.name}</div>
               <input className="checkboxInput" onChange={this.tuggleChecked.bind(this)} type={'checkbox'} checked={this.state.done} />
             </AccordionItemTitle>
               <AccordionItemBody>
                 <div id="deadline" className={css}>
-                  Deadline: {this.props.task.deadline ? this.props.task.deadline : 'no deadline'}
+                  Deadline: {this.props.task.attributes.deadline ? this.props.task.attributes.deadline : 'no deadline'}
                 </div>
                 <CommentsContainer project={this.props.project} task={this.props.task} />
               </AccordionItemBody>

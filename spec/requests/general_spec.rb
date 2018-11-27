@@ -13,8 +13,16 @@ describe "the signin process", type: :feature, js: true do
 
     find('.projectInput').set('Test Project')
 
-    click_button 'Add'
+    click_button 'Save'
 
     expect(page).to have_content 'Test Project'
+
+    find('.down_arrow').click
+
+    click_button 'New Task'
+
+    find('.taskInput').set('Test Task')
+
+    click_button 'Save'
   end
 end

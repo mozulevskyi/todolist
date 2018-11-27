@@ -11,12 +11,12 @@ class TasksContainer extends Component {
       tasks: [],
       editingTaskId: false,
     }
-
-    axios.defaults.withCredentials = true;
   }
 
   componentDidMount() {
-    axios.get(`/projects/${this.props.project.id}/tasks.json` )
+    fetch(`/projects/${this.props.project.id}/tasks.json`, {
+      credentials: 'include',
+    }).then(response => response.json())
       .then(response => {
         this.setState({ tasks: response.data });
       })
@@ -26,7 +26,15 @@ class TasksContainer extends Component {
   };
 
   addNewTask = () => {
-    axios.post(`/projects/${this.props.project.id}/tasks`, {task: {name: '', done: false}})
+    fetch(`/projects/${this.props.project.id}/tasks`, {
+      credentials: 'include',
+      method: 'post',
+      headers: {
+        'Accept': 'application/vnd.api+json',
+        'Content-Type': 'application/vnd.api+json'
+      },
+      body: JSON.stringify({data : {type: 'tasks',  attributes: {name: '', done: false, deadline: null} } })
+    }).then(response => response.json())
       .then(response => {
         const tasks = update(this.state.tasks, { $splice: [[0, 0, response.data]]})
         this.setState({tasks: tasks, editingTaskId: response.data.id})
@@ -45,8 +53,14 @@ class TasksContainer extends Component {
   };
 
   deleteTask = (id) => {
-    axios.delete(`/projects/${this.props.project.id}/tasks/${id}`)
-      .then(response => {
+    fetch(`/projects/${this.props.project.id}/tasks/${id}`, {
+      credentials: 'include',
+        method: 'DELETE',
+        headers: {
+        'Accept': 'application/vnd.api+json',
+          'Content-Type': 'application/vnd.api+json'
+      }
+    }).then(response => {
         const taskIndex = this.state.tasks.findIndex(x => x.id === id)
         const tasks = update(this.state.tasks, { $splice: [[taskIndex, 1]]})
         this.setState({tasks: tasks})
