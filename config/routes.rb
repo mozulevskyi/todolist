@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   root 'home#index'
 
   apipie
-  resources :projects do
-    resources :tasks do
-      resources :comments
+  jsonapi_resources :projects do
+    jsonapi_resources :tasks do
+      jsonapi_resources :comments
     end
   end
 end

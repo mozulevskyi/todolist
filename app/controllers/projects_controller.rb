@@ -1,10 +1,10 @@
 class ProjectsController < ApplicationController
 
-  api :GET, '/projects', 'List of all projects in json format'
-  def index
-    @projects = current_user.projects.order('created_at DESC')
-    render json: @projects
-  end
+  # api :GET, '/projects', 'List of all projects in json format'
+  # def index
+  #   @projects = current_user.projects.order('created_at DESC')
+  #   render json: @projects
+  # end
 
   api :POST, '/projects', 'Create a new project'
   def create

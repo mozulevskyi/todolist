@@ -15,10 +15,10 @@ class ProjectsContainer extends Component {
   }
 
   componentDidMount() {
-    axios.get('/projects.json' )
+    fetch('/projects.json', { credentials: 'include' })
+      .then(response => response.json())
       .then(response => {
         this.setState({ projects: response.data });
-
       })
       .catch(error => {
         console.log('Error fetching and parsing data', error);
