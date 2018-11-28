@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 
 class CommentForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      body: this.props.comment.body,
+      body: this.props.comment.attributes.body,
     }
-    axios.defaults.withCredentials = true;
   }
 
   handleInput = (e) => {
@@ -17,7 +15,15 @@ class CommentForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const comment = {body: this.state.body}
-    axios.put(`/projects/${this.props.project.id}/tasks/${this.props.task.id}/comments/${this.props.comment.id}`, {comment: comment})
+    fetch(`/projects/${this.props.project.id}/tasks/${this.props.task.id}/comments/${this.props.comment.id}`, {
+      credentials: 'include',
+      method: 'put',
+      headers: {
+        'Accept': 'application/vnd.api+json',
+        'Content-Type': 'application/vnd.api+json'
+      },
+      body: JSON.stringify({data : {type: 'comments',  attributes: comment, id: this.props.comment.id, relationships: {task: {data: {type: 'tasks', id: this.props.task.id}}} } })
+    }).then(response => response.json())
       .then(response => {
         console.log(response)
         this.props.updateComment(response.data)

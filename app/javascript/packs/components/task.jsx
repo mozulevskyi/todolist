@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import CommentsContainer from "./commentsContainer";
-import moment from "moment";
 
 import {
   Accordion,
@@ -16,8 +14,6 @@ class Task extends Component {
   constructor(props) {
     super(props)
     this.state = props.task
-    this.state.currentMoment = moment();
-    axios.defaults.withCredentials = true;
   }
 
   handleClick = () => { this.props.onClick(this.props.task.id) };
@@ -26,7 +22,15 @@ class Task extends Component {
 
   handleChecked = (checked) => {
     const task = {done: checked}
-    axios.put(`/projects/${this.props.project.id}/tasks/${this.props.task.id}`, {task: task})
+    fetch(`/projects/${this.props.project.id}/tasks/${this.props.task.id}`, {
+      credentials: 'include',
+      method: 'put',
+      headers: {
+        'Accept': 'application/vnd.api+json',
+        'Content-Type': 'application/vnd.api+json'
+      },
+      body: JSON.stringify({data : {type: 'tasks', attributes: task, id: this.props.task.id, relationships: {project: {data: {type: 'projects', id: this.props.project.id}}} } })
+    }).then(response => response.json())
       .then(response => {
         console.log(response)
       })

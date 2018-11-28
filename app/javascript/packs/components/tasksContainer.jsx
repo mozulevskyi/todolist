@@ -33,7 +33,7 @@ class TasksContainer extends Component {
         'Accept': 'application/vnd.api+json',
         'Content-Type': 'application/vnd.api+json'
       },
-      body: JSON.stringify({data : {type: 'tasks',  attributes: {name: '', done: false, deadline: null} } })
+      body: JSON.stringify({data : {type: 'tasks',  attributes: {name: '', done: false, deadline: null}, relationships: {project: {data: {type: 'projects', id: this.props.project.id}}} } })
     }).then(response => response.json())
       .then(response => {
         const tasks = update(this.state.tasks, { $splice: [[0, 0, response.data]]})

@@ -25,7 +25,6 @@ class ProjectForm extends Component {
       body: JSON.stringify({data: { type: 'projects', attributes: project, id: this.props.project.id}})
     }).then(response => response.json())
       .then(response => {
-        console.log(response)
         this.props.updateProject(response.data)
         this.setState(response.data)
       })
