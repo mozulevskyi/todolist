@@ -1,2 +1,2 @@
-class HomeResource < JSONAPI::Resources
+class HomeResource < JSONAPI::Resource
 end
