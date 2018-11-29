@@ -9,11 +9,17 @@ describe "the signin process", type: :feature, js: true do
 
     expect(page).to have_content 'Todolist'
 
+    sleep 5
+
     click_button 'New Project'
+
+    sleep 5
 
     find('.projectInput').set('Test Project')
 
     click_button 'Save'
+
+    sleep 1
 
     expect(page).to have_content 'Test Project'
 
@@ -21,8 +27,12 @@ describe "the signin process", type: :feature, js: true do
 
     click_button 'New Task'
 
+    sleep 1
+
     find('.taskInput').set('Test Task')
 
     click_button 'Save'
+
+    sleep 1
   end
 end
