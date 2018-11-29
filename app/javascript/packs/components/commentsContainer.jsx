@@ -15,7 +15,9 @@ class CommentsContainer extends Component {
   }
 
   componentDidMount() {
-    axios.get(`/projects/${this.props.project.id}/tasks/${this.props.task.id}/comments.json`)
+    fetch(`projects/${this.props.project.id}/tasks/${this.props.task.id}/comments.json`, {
+      credentials: 'include'
+    }).then(response => response.json())
       .then(response => {
         this.setState({ comments: response.data });
       })
@@ -25,7 +27,15 @@ class CommentsContainer extends Component {
   };
 
   addNewComment = () => {
-    axios.post(`/projects/${this.props.project.id}/tasks/${this.props.task.id}/comments`, {comment: {body: ''}})
+    fetch(`/projects/${this.props.project.id}/tasks/${this.props.task.id}/comments`, {
+      credentials: 'include',
+      method: 'post',
+      headers: {
+        'Accept': 'application/vnd.api+json',
+        'Content-Type': 'application/vnd.api+json'
+      },
+      body: JSON.stringify({data: {type: 'comments',  attributes: {body: ''}, relationships: {task: {data: {type: 'tasks', id: this.props.task.id}}} } })
+    }).then(response => response.json())
       .then(response => {
         const comments = update(this.state.comments, { $splice: [[0, 0, response.data]]})
         this.setState({comments: comments, editingCommentId: response.data.id})
@@ -44,8 +54,14 @@ class CommentsContainer extends Component {
   };
 
   deleteComment = (id) => {
-    axios.delete(`/projects/${this.props.project.id}/tasks/${this.props.task.id}/comments/${id}`)
-      .then(response => {
+    fetch(`/projects/${this.props.project.id}/tasks/${this.props.task.id}/comments/${id}`, {
+      credentials: 'include',
+        method: 'DELETE',
+        headers: {
+          'Accept': 'application/vnd.api+json',
+          'Content-Type': 'application/vnd.api+json'
+      }
+    }).then(response => {
         const commentIndex = this.state.comments.findIndex(x => x.id === id)
         const comments = update(this.state.comments, { $splice: [[commentIndex, 1]]})
         this.setState({comments: comments})

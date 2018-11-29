@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 
 import DatePicker from "react-datepicker";
 import moment from "moment";
@@ -10,12 +9,10 @@ class TaskForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      name: this.props.task.name,
-      done: this.props.task.done,
+      name: this.props.task.attributes.name,
+      done: this.props.task.attributes.done,
       startDate: moment()
-    }
-
-    axios.defaults.withCredentials = true;
+    };
   }
 
   handleInput = (e) => {
@@ -25,9 +22,16 @@ class TaskForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const task = {name: this.state.name, done: this.state.done}
-    axios.put(`/projects/${this.props.project.id}/tasks/${this.props.task.id}`, {task: task})
+    fetch(`/projects/${this.props.project.id}/tasks/${this.props.task.id}`, {
+      credentials: 'include',
+      method: 'put',
+      headers: {
+        'Accept': 'application/vnd.api+json',
+        'Content-Type': 'application/vnd.api+json'
+      },
+      body: JSON.stringify({data : {type: 'tasks',  attributes: task, id: this.props.task.id, relationships: {project: {data: {type: 'projects', id: this.props.project.id}}} } })
+    }).then(response => response.json())
       .then(response => {
-        console.log(response)
         this.props.updateTask(response.data)
         this.setState(response.data)
       })
@@ -36,7 +40,15 @@ class TaskForm extends Component {
 
   handleChange = (date) => {
     const task = {deadline: date}
-    axios.put(`/projects/${this.props.project.id}/tasks/${this.props.task.id}`, {task: task})
+    fetch(`/projects/${this.props.project.id}/tasks/${this.props.task.id}`, {
+      credentials: 'include',
+      method: 'put',
+      headers: {
+        'Accept': 'application/vnd.api+json',
+        'Content-Type': 'application/vnd.api+json'
+      },
+      body: JSON.stringify({data : {type: 'tasks',  attributes: task, id: this.props.task.id, relationships: {project: {data: {type: 'projects', id: this.props.project.id}}} } })
+    }).then(response => response.json())
       .then(response => {
         console.log(response)
         this.setState({ startDate: date });

@@ -26,7 +26,7 @@ class Project extends Component {
             <AccordionItemTitle>
               <a className="down_arrow"></a>
               <span className="projectDeleteButton" onClick={this.handleDelete}>&#10539;</span>
-              <h4 className="tile" onClick={this.handleClick}>{this.props.project.title}</h4>
+              <h4 className="tile" onClick={this.handleClick}>{this.props.project.attributes.title}</h4>
             </AccordionItemTitle>
             <AccordionItemBody>
               <TasksContainer project={this.props.project}/>

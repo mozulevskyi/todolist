@@ -16,6 +16,7 @@ gem 'jbuilder', '~> 2.5'              # Build JSON APIs with ease. Read more: ht
 gem 'coffee-rails', '~> 4.2', '>= 4.2.2'
 gem 'devise', '~> 4.5'
 gem 'cancancan', '~> 2.0'
+gem 'jsonapi-resources', '~> 0.9.0'
 
 group :development, :test do
   gem 'byebug', '~> 10.0.2'

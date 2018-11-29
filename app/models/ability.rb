@@ -4,11 +4,8 @@ class Ability
   def initialize(user)
     if user.present?
       can :manage, Project, user_id: user.id
-
-      can :manage, Task do |task|
-        project_ids = user.projects.map(&:id)
-        project_ids.include?(task.project_id)
-      end
+      can :manage, Task
+      can :manage, Comment
     end
     # Define abilities for the passed in user here. For example:
     #

@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 
 class ProjectForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      title: this.props.project.title,
+      title: this.props.project.attributes.title,
     }
-    axios.defaults.withCredentials = true;
   }
 
   handleInput = (e) => {
@@ -17,9 +15,16 @@ class ProjectForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const project = {title: this.state.title}
-    axios.put(`/projects/${this.props.project.id}`, {project: project})
+    fetch(`/projects/${this.props.project.id}`, {
+      credentials: 'include',
+      method: 'put',
+      headers: {
+        'Accept': 'application/vnd.api+json',
+        'Content-Type': 'application/vnd.api+json'
+      },
+      body: JSON.stringify({data: { type: 'projects', attributes: project, id: this.props.project.id}})
+    }).then(response => response.json())
       .then(response => {
-        console.log(response)
         this.props.updateProject(response.data)
         this.setState(response.data)
       })

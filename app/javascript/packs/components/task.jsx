@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import CommentsContainer from "./commentsContainer";
-import moment from "moment";
 
 import {
   Accordion,
@@ -16,8 +14,6 @@ class Task extends Component {
   constructor(props) {
     super(props)
     this.state = props.task
-    this.state.currentMoment = moment();
-    axios.defaults.withCredentials = true;
   }
 
   handleClick = () => { this.props.onClick(this.props.task.id) };
@@ -26,7 +22,15 @@ class Task extends Component {
 
   handleChecked = (checked) => {
     const task = {done: checked}
-    axios.put(`/projects/${this.props.project.id}/tasks/${this.props.task.id}`, {task: task})
+    fetch(`/projects/${this.props.project.id}/tasks/${this.props.task.id}`, {
+      credentials: 'include',
+      method: 'put',
+      headers: {
+        'Accept': 'application/vnd.api+json',
+        'Content-Type': 'application/vnd.api+json'
+      },
+      body: JSON.stringify({data : {type: 'tasks', attributes: task, id: this.props.task.id, relationships: {project: {data: {type: 'projects', id: this.props.project.id}}} } })
+    }).then(response => response.json())
       .then(response => {
         console.log(response)
       })
@@ -39,8 +43,8 @@ class Task extends Component {
   };
 
   deadlineStyle = () => {
-    if(!this.props.task.deadline) return 'deadline_time'
-    let date = new Date(this.props.task.deadline);
+    if(!this.props.task.attributes.deadline) return 'deadline_time'
+    let date = new Date(this.props.task.attributes.deadline);
     let currentDate = new Date();
     return (currentDate > date) ? 'deadline_red' : 'deadline_ok';
   };
@@ -54,12 +58,12 @@ class Task extends Component {
             <AccordionItemTitle>
               <i className="down_arrow"></i>
               <span className="taskDeleteButton" onClick={this.handleDelete}>&#10539;</span>
-              <div className="task" onClick={this.handleClick}>{this.props.task.name}</div>
+              <div className="task" onClick={this.handleClick}>{this.props.task.attributes.name}</div>
               <input className="checkboxInput" onChange={this.tuggleChecked.bind(this)} type={'checkbox'} checked={this.state.done} />
             </AccordionItemTitle>
               <AccordionItemBody>
                 <div id="deadline" className={css}>
-                  Deadline: {this.props.task.deadline ? this.props.task.deadline : 'no deadline'}
+                  Deadline: {this.props.task.attributes.deadline ? this.props.task.attributes.deadline : 'no deadline'}
                 </div>
                 <CommentsContainer project={this.props.project} task={this.props.task} />
               </AccordionItemBody>
