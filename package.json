@@ -2,19 +2,19 @@
   "name": "todolist",
   "private": true,
   "dependencies": {
-    "@rails/webpacker": "^4.2.0",
-    "axios": "^0.18.1",
-    "babel-preset-react": "^6.24.1",
+    "axios": "^0.18.0",
     "immutability-helper": "^2.8.1",
     "moment": "^2.22.2",
-    "prop-types": "^15.6.2",
     "rc-checkbox": "^2.1.5",
-    "react": "^16.6.0",
     "react-accessible-accordion": "^2.4.5",
     "react-datepicker": "^1.8.0",
+    "@rails/webpacker": "3.5",
+    "babel-preset-react": "^6.24.1",
+    "prop-types": "^15.6.2",
+    "react": "^16.6.0",
     "react-dom": "^16.6.0"
   },
   "devDependencies": {
-    "webpack-dev-server": "3.1.11"
+    "webpack-dev-server": "2.11.2"
   }
 }
