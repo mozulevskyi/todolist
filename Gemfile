@@ -1,22 +1,21 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.4.2'
+ruby '2.7.0'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.1'
-gem 'pg', '~> 0.21.0'                 # Postgres gem
-gem 'puma', '~> 3.12'                 # Use Puma as the app server
-gem 'sass-rails', '~> 5.0'            # Use SCSS for stylesheets
-gem 'uglifier', '>= 1.3.0'            # Use Uglifier as compressor for JavaScript assets
-gem 'webpacker', '~> 3.5', '>= 3.5.5' # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
+gem 'rails', '~> 6.0', '>= 6.0.2.1'       # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'pg', '~> 0.21.0'                     # Postgres gem
+gem 'puma', '~> 3.12'                     # Use Puma as the app server
+gem 'sass-rails', '~> 5.0'                # Use SCSS for stylesheets
+gem 'uglifier', '>= 1.3.0'                # Use Uglifier as compressor for JavaScript assets
+gem 'webpacker', '~> 4.2', '>= 4.2.2'     # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'apipie-rails', '~> 0.5.13'
-gem 'turbolinks', '~> 5'              # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'jbuilder', '~> 2.5'              # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'coffee-rails', '~> 4.2', '>= 4.2.2'
+gem 'turbolinks', '~> 5'                  # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
+gem 'jbuilder', '~> 2.5'                  # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'devise', '~> 4.7'
 gem 'cancancan', '~> 2.0'
 gem 'jsonapi-resources', '~> 0.9.0'
+gem 'bootsnap', '~> 1.4', '>= 1.4.5'
 
 group :development, :test do
   gem 'byebug', '~> 10.0.2'
@@ -38,12 +37,11 @@ group :test do
   gem 'simplecov', '~> 0.16.1', require: false
   gem 'shoulda-matchers', '~> 3.1.2'
 
-  gem 'selenium-webdriver', '~> 3.9'                    # for browser tests
+  gem 'selenium-webdriver', '~> 3.9'       # for browser tests
 end
 
 group :production do
-  gem 'rails_12factor', '~> 0.0.3'                      # Helps speed up deploys on heroku
+  gem 'rails_12factor', '~> 0.0.3'         # Helps speed up deploys on heroku
 end
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby] # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
