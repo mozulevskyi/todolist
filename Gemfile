@@ -5,7 +5,7 @@ ruby '2.7.0'
 
 gem 'rails', '~> 6.0', '>= 6.0.2.1'       # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'pg', '~> 0.21.0'                     # Postgres gem
-gem 'puma', '~> 3.12'                     # Use Puma as the app server
+gem 'puma', '~> 4.3', '>= 4.3.1'          # Use Puma as the app server
 gem 'sass-rails', '~> 5.0'                # Use SCSS for stylesheets
 gem 'uglifier', '>= 1.3.0'                # Use Uglifier as compressor for JavaScript assets
 gem 'webpacker', '~> 4.2', '>= 4.2.2'     # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -13,7 +13,7 @@ gem 'apipie-rails', '~> 0.5.13'
 gem 'turbolinks', '~> 5'                  # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'jbuilder', '~> 2.5'                  # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'devise', '~> 4.7'
-gem 'cancancan', '~> 2.0'
+# gem 'cancancan', '~> 2.0'
 gem 'jsonapi-resources', '~> 0.9.0'
 gem 'bootsnap', '~> 1.4', '>= 1.4.5'
 
