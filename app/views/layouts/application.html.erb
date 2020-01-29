@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Todolist</title>
+    <title>Assistant</title>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   </head>
 
   <body>
+    <% if user_signed_in? %>
+      <%= render partial: 'partials/header', formats: [:html] %>
+    <% end %>
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-
-    <% if user_signed_in? %>
-      <div class="log_out">
-        <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
-      </div>
-    <% end %>
 
     <%= yield %>
   </body>
