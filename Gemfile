@@ -5,7 +5,7 @@ ruby '2.7.0'
 
 gem 'rails', '~> 6.0', '>= 6.0.2.1'       # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'pg', '~> 0.21.0'                     # Postgres gem
-gem 'puma', '~> 4.3', '>= 4.3.1'          # Use Puma as the app server
+gem 'puma', '~> 4.3'                    # Use Puma as the app server
 gem 'sass-rails', '~> 5.0'                # Use SCSS for stylesheets
 gem 'uglifier', '>= 1.3.0'                # Use Uglifier as compressor for JavaScript assets
 gem 'webpacker', '~> 4.2', '>= 4.2.2'     # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
