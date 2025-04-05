@@ -6,7 +6,7 @@
     "axios": "^0.18.0",
     "babel-preset-react": "^6.24.1",
     "immutability-helper": "^2.8.1",
-    "moment": "^2.22.2",
+    "moment": "^2.29.4",
     "prop-types": "^15.6.2",
     "rc-checkbox": "^2.1.5",
     "react": "^16.6.0",
